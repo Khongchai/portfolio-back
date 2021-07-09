@@ -1,0 +1,11 @@
+{
+  "_comment": "this file is used for typeorm's sql generation",
+  "type": "postgres",
+  "host": "localhost",
+  "port": 5432,
+  "username": "postgres",
+  "password": "postgres",
+  "database": "khong_portfolio",
+  "entities": ["dist/entities/*.js"],
+  "migrations": ["dist/mgirations/*.js"]
+}

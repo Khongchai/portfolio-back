@@ -1,0 +1,32 @@
+version: "3"
+
+services:
+  postgresql:
+    image: postgres
+    restart: always
+    environment:
+      - POSTGRES_DB=khong_portfolio
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES
+    volumes:
+      - postgres:/data/postgres
+    ports:
+      - "5432:5432"
+
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"
+
+  web:
+    build: .
+    ports:
+      - "4000:4000"
+    volumes:
+      - .:/code
+    depends_on:
+      - postgresql
+      - redis
+volumes:
+  postgres:
