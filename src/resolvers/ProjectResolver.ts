@@ -1,4 +1,3 @@
-import { isAuth } from "../middleware/isAuth";
 import {
   Arg,
   Ctx,
@@ -8,7 +7,6 @@ import {
   Mutation,
   Query,
   Resolver,
-  UseMiddleware,
 } from "type-graphql";
 import { getConnection } from "typeorm";
 import { ProjectEntity } from "../entities/ProjectEntity";
@@ -168,7 +166,6 @@ export class ProjectsResolver {
   }
 
   @Mutation(() => ProjResponse, { nullable: true })
-  @UseMiddleware(isAuth)
   async createProject(
     @Arg("projectData") projectData: ProjectCreationInput,
     @Ctx() {}: Context
@@ -222,7 +219,6 @@ export class ProjectsResolver {
   }
 
   @Mutation(() => ProjResponse, { nullable: true })
-  @UseMiddleware(isAuth)
   async addOrRemoveTechnologies(
     @Arg("projectData") input: AddTechInput,
     @Arg("operation") operation: boolean
@@ -306,7 +302,6 @@ export class ProjectsResolver {
   }
 
   @Mutation(() => ProjResponse)
-  @UseMiddleware(isAuth)
   async setProjectHighlight(
     @Arg("title") title: string,
     @Arg("operation") operation: boolean
@@ -321,7 +316,6 @@ export class ProjectsResolver {
   }
 
   @Mutation(() => String)
-  @UseMiddleware(isAuth)
   async deleteAllProjects(): Promise<string> {
     const projectsToBeDeleted = await ProjectEntity.find({});
     if (projectsToBeDeleted.length === 0) {
@@ -333,7 +327,6 @@ export class ProjectsResolver {
   }
 
   @Mutation(() => Boolean)
-  @UseMiddleware(isAuth)
   async deleteProject(@Arg("id") id: number): Promise<boolean> {
     const projectToBeDeleted = await ProjectEntity.findOne({ id });
     if (!projectToBeDeleted) {

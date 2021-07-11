@@ -13,27 +13,22 @@ import connectRedis from "connect-redis";
 import cors from "cors";
 import path from "path";
 import { COOKIE_NAME, IN_PRODUCTION } from "./constants";
-import { AdminEntity } from "./entities/AdminEntity";
-import { AdminResolver } from "./resolvers/AdminResolver";
 
 dotenv.config();
 const main = async () => {
   const conn = await createConnection({
     type: "postgres",
-    database: "khong_portfolio",
-    username: "postgres",
-    password: "postgres",
     migrations: [path.join(__dirname, "/migrations/*")],
     logging: true,
     url: process.env.DATABASE_URL,
-    ssl: true,
-    extra: {
-      ssl: { rejectUnauthorized: false },
-    },
+    // ssl: process.env.NODE_ENV === "production"? true: false,
+    // extra: {
+    //   ssl: { rejectUnauthorized: false },
+    // },
     host: "postgresql",
     // synchronize: false,
     migrationsRun: false,
-    entities: [ProjectEntity, TechnologyEntity, AdminEntity],
+    entities: [ProjectEntity, TechnologyEntity],
   });
 
   if (process.env.NODE_ENV === "production") {
@@ -71,7 +66,7 @@ const main = async () => {
   );
   const apolloServer = new ApolloServer({
     schema: await buildSchema({
-      resolvers: [ProjectsResolver, TechnologyResolver, AdminResolver],
+      resolvers: [ProjectsResolver, TechnologyResolver],
       validate: false,
     }),
     context: ({ req, res }) => ({ req, res, redis: redisClient }),

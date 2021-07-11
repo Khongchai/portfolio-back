@@ -4,12 +4,10 @@ import {
   Mutation,
   Query,
   Resolver,
-  UseMiddleware,
 } from "type-graphql";
 import { getManager } from "typeorm";
 import { TechnologyEntity } from "../entities/TechnologyEntity";
 import { TechAsSeparateFields } from "../inputAndObjectTypes/TechnologyResolver";
-import { isAuth } from "../middleware/isAuth";
 import { Context } from "../types";
 import { getTechnologiesBasedOnRoles } from "../utils/getTechnologiesBasedOnRoles";
 
@@ -64,7 +62,6 @@ export class TechnologyResolver {
   }
 
   @Mutation(() => TechnologyEntity, { nullable: true })
-  @UseMiddleware(isAuth)
   async createTechnology(
     @Arg("title") title: string
   ): Promise<TechnologyEntity | null> {
@@ -78,7 +75,6 @@ export class TechnologyResolver {
   }
 
   @Mutation(() => String)
-  @UseMiddleware(isAuth)
   async deleteAllTechnologies(@Ctx() {}: Context): Promise<string> {
     const techToBeDeleted = await TechnologyEntity.find({});
     if (techToBeDeleted.length === 0) {
@@ -90,7 +86,6 @@ export class TechnologyResolver {
   }
 
   @Mutation(() => String)
-  @UseMiddleware(isAuth)
   async deleteTechnolgy(@Arg("title") title: string): Promise<string> {
     const techToBeDeleted = await TechnologyEntity.findOne({
       where: { title },
