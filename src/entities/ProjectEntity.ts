@@ -71,4 +71,18 @@ export class ProjectEntity extends BaseEntity {
   @Field(() => Boolean, { nullable: true })
   @Column({ nullable: true })
   isHighlight: Boolean;
+
+  @Field(() => String, { nullable: true })
+  @Column({ nullable: true })
+  heroImgLink: string;
+
+  //If frontend detects android, ios, or react native,
+  //This field will be pulled automatically.
+  @Field(() => String, { nullable: true })
+  @Column({ nullable: true })
+  playStoreLink: string;
+
+  @Field(() => String, { nullable: true })
+  @Column({ nullable: true })
+  appStoreLink: string;
 }

@@ -1,10 +1,4 @@
-import {
-  Arg,
-  Ctx,
-  Mutation,
-  Query,
-  Resolver,
-} from "type-graphql";
+import { Arg, Ctx, Mutation, Query, Resolver } from "type-graphql";
 import { getManager } from "typeorm";
 import { TechnologyEntity } from "../entities/TechnologyEntity";
 import { TechAsSeparateFields } from "../inputAndObjectTypes/TechnologyResolver";
@@ -25,7 +19,7 @@ export class TechnologyResolver {
   }
 
   /**
-   * Find out what something is by referring to their relation tables.
+   * This finds out what something is by referring to their relation tables.
    * This way, we know that "Python" is a backend language and that "heroku"
    * is not a language but a hosting service
    *

@@ -27,12 +27,13 @@ const main = async () => {
     // },
     host: "postgresql",
     // synchronize: false,
-    migrationsRun: false,
+    migrationsRun: true,
     entities: [ProjectEntity, TechnologyEntity],
   });
 
   if (process.env.NODE_ENV === "production") {
     //Run when there's an update to the database
+    //Or use typeorm migration:run
     await conn.runMigrations();
   }
 

@@ -31,3 +31,6 @@ insert into technology_entity (title) values ('SQL');
 insert into technology_entity (title) values ('Google Play');
 insert into technology_entity (title) values ('Three.js');
 insert into technology_entity (title) values ('Go');
+insert into technology_entity (title) values ('Vercel');
+insert into technology_entity (title) values ('GLSL');
+insert into technology_entity (title) values ('Graphene-Python');
