@@ -64,7 +64,7 @@
                
     
           insert into project_entity (title, description, "shortDescription", "githubLink", "startDate", "isHighlight", "websiteLink", "imgLink") 
-               values ('Portfolio', 'This portfolio website you''re in right now was made with Gatsby. It talks to the backend, written using Express through graphql, with Redis caching results like all projects or all technologies.', 
+               values ('Portfolio', 'This portfolio website you''re on right now was made with Gatsby. It talks to the backend, written using Express through graphql, with Redis caching results like all projects or all technologies.', 
                'Khong'' portfolio', 
                'https://github.com/Khongchai/portfolio', 
                '2021-01-10', 'true', 'https://khongchai-portfolio-frontend.vercel.app/', 'https://res.cloudinary.com/dmmhsq8ti/image/upload/v1626075879/image_4_ixpynu.png');
