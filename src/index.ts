@@ -27,7 +27,7 @@ const main = async () => {
     // },
     host: "postgresql",
     // synchronize: false,
-    migrationsRun: true,
+    // migrationsRun: false,
     entities: [ProjectEntity, TechnologyEntity],
   });
 

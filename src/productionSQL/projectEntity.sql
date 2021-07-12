@@ -30,7 +30,7 @@
                'A simple blog with Gatsby', 
                'https://github.com/Khongchai/journeys', 
                'https://khongchai.github.io/journeys', 
-               '2020-12-23', '2021-04-30', 'true',
+               '2020-12-23', '2021-04-30', 'false',
                'https://res.cloudinary.com/dmmhsq8ti/image/upload/v1618208183/Screen_Shot_2021-04-13_at_12.48.04-fullpage_wndync.png',
                'https://res.cloudinary.com/dmmhsq8ti/image/upload/v1618208450/Journeys_fancct.png');
                
@@ -82,6 +82,7 @@
                 ((select id from technology_entity where title='TypeGraphQL'), (select id from project_entity where title = 'Portfolio')),
                 ((select id from technology_entity where title='TypeORM'), (select id from project_entity where title = 'Portfolio')),
                 ((select id from technology_entity where title='Redis'), (select id from project_entity where title = 'Portfolio')),
+                ((select id from technology_entity where title='Docker'), (select id from project_entity where title = 'Portfolio')),
                 ((select id from technology_entity where title='PostgreSQL'), (select id from project_entity where title = 'Portfolio'));
                insert into technology_entity_hosting_project_entity ("technologyEntityId", "projectEntityId") values ((select id from technology_entity where title in ('Heroku')),(select id from project_entity where title = 'Portfolio'));
                insert into technology_entity_hosting_project_entity ("technologyEntityId", "projectEntityId") values ((select id from technology_entity where title in ('Vercel')),(select id from project_entity where title = 'Portfolio'));
@@ -97,7 +98,7 @@
             'Company Portfolio', 
             'https://github.com/Khongchai/TripleAGloves',
             'https://khongchai.github.io/TripleAGloves/', 
-            '2021-03-20', 'false',
+            '2021-03-20', 'true',
             'https://res.cloudinary.com/dmmhsq8ti/image/upload/v1626074400/image_3_s7fl9i.png', 
             'https://res.cloudinary.com/dmmhsq8ti/image/upload/v1626068805/triplea-hero_ntuaxx.png');
             
@@ -128,6 +129,7 @@
                ((select id from technology_entity where title='Redis'), (select id from project_entity where title = 'ECommerce')),
                ((select id from technology_entity where title='Graphene-Python'), (select id from project_entity where title = 'ECommerce')),
                ((select id from technology_entity where title='GraphQL'), (select id from project_entity where title = 'ECommerce')),
+               ((select id from technology_entity where title='Docker'), (select id from project_entity where title = 'ECommerce')),
                ((select id from technology_entity where title='PostgreSQL'), (select id from project_entity where title = 'ECommerce'));
            insert into technology_entity_hosting_project_entity ("technologyEntityId", "projectEntityId") values ((select id from technology_entity where title in ('Vercel')),(select id from project_entity where title = 'ECommerce'));
            insert into technology_entity_hosting_project_entity ("technologyEntityId", "projectEntityId") values ((select id from technology_entity where title in ('Heroku')),(select id from project_entity where title = 'ECommerce'));
