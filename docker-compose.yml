@@ -28,5 +28,7 @@ services:
     depends_on:
       - postgresql
       - redis
+    environment:
+      - NODE_ENV=production
 volumes:
   postgres:

@@ -21,10 +21,13 @@ const main = async () => {
     migrations: [path.join(__dirname, "/migrations/*")],
     logging: true,
     url: process.env.DATABASE_URL,
-    // ssl: process.env.NODE_ENV === "production"? true: false,
-    // extra: {
-    //   ssl: { rejectUnauthorized: false },
-    // },
+    ssl: process.env.NODE_ENV === "production" ? true : false,
+    extra:
+      process.env.NODE_ENV === "production"
+        ? {
+            ssl: { rejectUnauthorized: false },
+          }
+        : null,
     host: "postgresql",
     // synchronize: false,
     // migrationsRun: false,
