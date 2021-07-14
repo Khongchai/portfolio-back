@@ -83,6 +83,7 @@
                 ((select id from technology_entity where title='TypeORM'), (select id from project_entity where title = 'Portfolio')),
                 ((select id from technology_entity where title='Redis'), (select id from project_entity where title = 'Portfolio')),
                 ((select id from technology_entity where title='Docker'), (select id from project_entity where title = 'Portfolio')),
+                ((select id from technology_entity where title='Apollo'), (select id from project_entity where title = 'Portfolio')),
                 ((select id from technology_entity where title='PostgreSQL'), (select id from project_entity where title = 'Portfolio'));
                insert into technology_entity_hosting_project_entity ("technologyEntityId", "projectEntityId") values ((select id from technology_entity where title in ('Heroku')),(select id from project_entity where title = 'Portfolio'));
                insert into technology_entity_hosting_project_entity ("technologyEntityId", "projectEntityId") values ((select id from technology_entity where title in ('Vercel')),(select id from project_entity where title = 'Portfolio'));

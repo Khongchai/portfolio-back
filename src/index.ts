@@ -68,7 +68,7 @@ const main = async () => {
         process.env.NODE_ENV === "production"
           ? [
               "https://khongchai-portfolio-frontend-khongchai.vercel.app",
-              "https://www.khongchai.xyz",
+              "https://www.khong.xyz",
             ]
           : "*",
       credentials: true,
