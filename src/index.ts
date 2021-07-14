@@ -64,7 +64,13 @@ const main = async () => {
   );
   app.use(
     cors({
-      origin: process.env.CORS_ORIGIN,
+      origin:
+        process.env.NODE_ENV === "production"
+          ? [
+              "https://khongchai-portfolio-frontend-khongchai.vercel.app/",
+              "https://www.khongchai.xyz",
+            ]
+          : "*",
       credentials: true,
     })
   );
