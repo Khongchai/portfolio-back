@@ -67,7 +67,7 @@ const main = async () => {
       origin:
         process.env.NODE_ENV === "production"
           ? [
-              "https://khongchai-portfolio-frontend-khongchai.vercel.app/",
+              "https://khongchai-portfolio-frontend-khongchai.vercel.app",
               "https://www.khongchai.xyz",
             ]
           : "*",
