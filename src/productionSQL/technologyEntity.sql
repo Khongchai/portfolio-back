@@ -34,3 +34,5 @@ insert into technology_entity (title) values ('Go');
 insert into technology_entity (title) values ('Vercel');
 insert into technology_entity (title) values ('GLSL');
 insert into technology_entity (title) values ('Graphene-Python');
+insert into technology_entity (title) values ('Cypress');
+insert into technology_entity (title) values ('React Testing Library');

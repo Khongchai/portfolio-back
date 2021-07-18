@@ -34,11 +34,7 @@ const main = async () => {
     entities: [ProjectEntity, TechnologyEntity],
   });
 
-  if (process.env.NODE_ENV === "production") {
-    //Run when there's an update to the database
-    //Or use typeorm migration:run
-    await conn.runMigrations();
-  }
+  await conn.runMigrations();
 
   const app = express();
   // app.set("proxy", 1);
