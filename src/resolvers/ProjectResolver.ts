@@ -60,7 +60,7 @@ export class ProjectsResolver {
       realLimit = 99999;
       realLimitPlusOne = 99999;
     } else {
-      realLimit = Math.min(5, limit);
+      realLimit = Math.min(8, limit);
       realLimitPlusOne = realLimit + 1;
     }
     const searchLowerCase = search ? `%${search.toLowerCase()}%` : "%";
