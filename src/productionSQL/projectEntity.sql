@@ -66,8 +66,8 @@
           insert into project_entity (title, description, "shortDescription", "githubLink", "startDate", "isHighlight", "websiteLink", "imgLink") 
                values ('Portfolio', 'This portfolio website you''re on right now was made with Gatsby. It talks to the backend, written using Express through graphql, with Redis caching results like all projects or all technologies.', 
                'Khong'' portfolio', 
-               'https://github.com/Khongchai/portfolio', 
-               '2021-01-10', 'true', 'https://khongchai-portfolio-frontend.vercel.app/', 'https://res.cloudinary.com/dmmhsq8ti/image/upload/v1626075879/image_4_ixpynu.png');
+               'https://github.com/Khongchai/portfolio-front', 
+               '2021-01-10', 'true', 'https://khong.xyz', 'https://res.cloudinary.com/dmmhsq8ti/image/upload/v1626075879/image_4_ixpynu.png');
                
                insert into technology_entity_front_end_in_project_entity ("technologyEntityId", "projectEntityId") values 
                   ((select id from technology_entity where title='Gatsby'), (select id from project_entity where title = 'Portfolio')),
@@ -75,6 +75,9 @@
                   ((select id from technology_entity where title='Chakra UI'), (select id from project_entity where title = 'Portfolio')),
                   ((select id from technology_entity where title='Urql'), (select id from project_entity where title = 'Portfolio')),
                   ((select id from technology_entity where title='GraphQL'), (select id from project_entity where title = 'Portfolio')),
+                  ((select id from technology_entity where title='React Testing Library'), (select id from project_entity where title = 'Portfolio')),
+                  ((select id from technology_entity where title='Cypress'), (select id from project_entity where title = 'Portfolio')),
+                  ((select id from technology_entity where title='Jest'), (select id from project_entity where title = 'Portfolio')),
                   ((select id from technology_entity where title='Three.js'), (select id from project_entity where title = 'Portfolio'));
                insert into technology_entity_back_end_in_project_entity ("technologyEntityId", "projectEntityId") values 
                 ((select id from technology_entity where title='Express'), (select id from project_entity where title = 'Portfolio')),
@@ -117,7 +120,7 @@
             values ('ECommerce', 'A Personal eCommerce website where I sell music and accompaniment tracks I made. The backend Django and Graphene-Python, and the front-end is Next.js', 
             'Music ECommerce website', 
             'https://github.com/Khongchai/music-ecommerce',
-            '10/07/2021', 'false', 'https://res.cloudinary.com/dmmhsq8ti/image/upload/v1626068812/ecommerce-hero_r1mhgb.png');
+            '2021-07-01', 'false', 'https://res.cloudinary.com/dmmhsq8ti/image/upload/v1626068812/ecommerce-hero_r1mhgb.png');
             
             insert into technology_entity_front_end_in_project_entity ("technologyEntityId", "projectEntityId") values 
               ((select id from technology_entity where title='Next.js'), (select id from project_entity where title = 'ECommerce')),
