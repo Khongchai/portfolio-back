@@ -53,9 +53,13 @@ export class ProjectsResolver {
     let realLimitPlusOne = 0;
 
     if (getAll) {
-      //Skip = 0 sets isFirst to true
-      //realLimit = 99999 fetches all proj
-      //RealLimitPlusOne = 99999 gets all sets isLast to true
+      /**
+       *
+       * Skip = 0 sets isFirst to true
+       * realLimit = 99999 fetches all proj
+       * RealLimitPlusOne = 99999 gets all sets isLast to true
+       *
+       */
       skip = 0;
       realLimit = 99999;
       realLimitPlusOne = 99999;
