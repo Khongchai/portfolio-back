@@ -1,3 +1,4 @@
+require("newrelic");
 import { buildSchema } from "type-graphql";
 import express from "express";
 import dotenv from "dotenv";
