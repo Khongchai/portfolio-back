@@ -14,11 +14,6 @@ services:
     ports:
       - "5432:5432"
 
-  redis:
-    image: redis
-    ports:
-      - "6379:6379"
-
   web:
     build: .
     ports:
@@ -27,7 +22,6 @@ services:
       - .:/code
     depends_on:
       - postgresql
-      - redis
 
 volumes:
   postgres:

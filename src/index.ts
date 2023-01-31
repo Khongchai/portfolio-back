@@ -8,9 +8,7 @@ import { TechnologyResolver } from "./resolvers/TechnologyResolver";
 import { createConnection } from "typeorm";
 import { ProjectEntity } from "./entities/ProjectEntity";
 import { TechnologyEntity } from "./entities/TechnologyEntity";
-import redis from "redis";
 import session from "express-session";
-import connectRedis from "connect-redis";
 import cors from "cors";
 import path from "path";
 import { COOKIE_NAME, IN_PRODUCTION } from "./constants";
@@ -26,8 +24,8 @@ const main = async () => {
     extra:
       process.env.NODE_ENV === "production"
         ? {
-            ssl: { rejectUnauthorized: false },
-          }
+          ssl: { rejectUnauthorized: false },
+        }
         : null,
     host: "postgresql",
     // synchronize: false,
@@ -38,17 +36,10 @@ const main = async () => {
   await conn.runMigrations();
 
   const app = express();
-  // app.set("proxy", 1);
-  const RedisStore = connectRedis(session);
-  const redisClient = redis.createClient({ url: process.env.REDIS_URL });
 
   app.use(
     session({
       name: COOKIE_NAME,
-      store: new RedisStore({
-        client: redisClient,
-        disableTTL: true,
-      }),
       cookie: {
         httpOnly: true,
         secure: IN_PRODUCTION,
@@ -64,9 +55,9 @@ const main = async () => {
       origin:
         process.env.NODE_ENV === "production"
           ? [
-              "https://khongchai-portfolio-frontend-khongchai.vercel.app",
-              "https://www.khong.xyz",
-            ]
+            "https://khongchai-portfolio-frontend-khongchai.vercel.app",
+            "https://www.khong.xyz",
+          ]
           : "*",
       credentials: true,
     })
@@ -76,7 +67,7 @@ const main = async () => {
       resolvers: [ProjectsResolver, TechnologyResolver],
       validate: false,
     }),
-    context: ({ req, res }) => ({ req, res, redis: redisClient }),
+    context: ({ req, res }) => ({ req, res }),
   });
 
   apolloServer.applyMiddleware({

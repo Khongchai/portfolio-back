@@ -5,7 +5,11 @@
   "port": 5432,
   "username": "postgres",
   "password": "postgres",
-  "database": "khong_portfolio_2",
-  "entities": ["dist/entities/*.js"],
-  "migrations": ["dist/migrations/*.js"]
+  "database": "khong-portfolio",
+  "entities": [
+    "dist/entities/*.js"
+  ],
+  "migrations": [
+    "dist/migrations/*.js"
+  ]
 }

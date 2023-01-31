@@ -1,4 +1,6 @@
 alter sequence technology_entity_id_seq restart with 1;
+insert into technology_entity (title) values ('Flutter');
+insert into technology_entity (title) values ('WebGL');
 insert into technology_entity (title) values ('TypeORM');
 insert into technology_entity (title) values ('MikroORM');
 insert into technology_entity (title) values ('Docker');
