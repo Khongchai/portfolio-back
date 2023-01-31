@@ -1,4 +1,3 @@
-require("newrelic");
 import { buildSchema } from "type-graphql";
 import express from "express";
 import dotenv from "dotenv";
@@ -15,11 +14,10 @@ import { COOKIE_NAME, IN_PRODUCTION } from "./constants";
 
 dotenv.config();
 const main = async () => {
-  const conn = await createConnection({
+  await createConnection({
     type: "postgres",
     migrations: [path.join(__dirname, "/migrations/*")],
     logging: true,
-    url: process.env.DATABASE_URL,
     ssl: process.env.NODE_ENV === "production" ? true : false,
     extra:
       process.env.NODE_ENV === "production"
@@ -27,13 +25,14 @@ const main = async () => {
           ssl: { rejectUnauthorized: false },
         }
         : null,
-    host: "postgresql",
-    // synchronize: false,
-    // migrationsRun: false,
+    host: process.env.DATABASE_HOST,
+    password: process.env.DATABASE_PASSWORD,
+    username: process.env.DATABASE_USERNAME,
+    database: process.env.DATABASE_NAME,
+    port: process.env.DATABASE_PORT,
+    migrationsRun: true,
     entities: [ProjectEntity, TechnologyEntity],
   });
-
-  await conn.runMigrations();
 
   const app = express();
 

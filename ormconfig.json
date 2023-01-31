@@ -5,7 +5,7 @@
   "port": 5432,
   "username": "postgres",
   "password": "postgres",
-  "database": "khong-portfolio",
+  "database": "khong_portfolio",
   "entities": [
     "dist/entities/*.js"
   ],

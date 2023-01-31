@@ -1,10 +1,8 @@
 import { MigrationInterface, QueryRunner } from "typeorm";
 
 export class migrateStuff1626693168796 implements MigrationInterface {
-  public async up(queryRunner: QueryRunner): Promise<void> {
-    //Delete from project_entity;
-    queryRunner.query(`
-
+   public async up(queryRunner: QueryRunner): Promise<void> {
+      queryRunner.query(`
     delete from project_entity;
     delete from technology_entity;
 
@@ -200,7 +198,7 @@ insert into technology_entity (title) values ('Jest');
      ((select id from technology_entity where title = 'TypeScript'), (select id from project_entity where title = 'ECommerce')); 
                  
       `);
-  }
+   }
 
-  public async down(_: QueryRunner): Promise<void> {}
+   public async down(_: QueryRunner): Promise<void> { }
 }
