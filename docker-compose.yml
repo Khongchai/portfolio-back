@@ -22,6 +22,9 @@ services:
       - .:/code
     depends_on:
       - postgresql
+    environment:
+      - DATABASE_HOST=postgresql
+
 
 volumes:
   postgres:

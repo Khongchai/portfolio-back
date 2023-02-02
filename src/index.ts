@@ -18,18 +18,13 @@ const main = async () => {
     type: "postgres",
     migrations: [path.join(__dirname, "/migrations/*")],
     logging: true,
-    ssl: process.env.NODE_ENV === "production" ? true : false,
-    extra:
-      process.env.NODE_ENV === "production"
-        ? {
-          ssl: { rejectUnauthorized: false },
-        }
-        : null,
+    ssl: false,
     host: process.env.DATABASE_HOST,
     password: process.env.DATABASE_PASSWORD,
     username: process.env.DATABASE_USERNAME,
     database: process.env.DATABASE_NAME,
     port: process.env.DATABASE_PORT,
+    synchronize: true,
     migrationsRun: true,
     entities: [ProjectEntity, TechnologyEntity],
   });
