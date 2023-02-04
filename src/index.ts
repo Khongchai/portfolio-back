@@ -7,10 +7,9 @@ import { TechnologyResolver } from "./resolvers/TechnologyResolver";
 import { createConnection } from "typeorm";
 import { ProjectEntity } from "./entities/ProjectEntity";
 import { TechnologyEntity } from "./entities/TechnologyEntity";
-import session from "express-session";
 import cors from "cors";
 import path from "path";
-import { COOKIE_NAME, IN_PRODUCTION } from "./constants";
+import { IN_PRODUCTION } from "./constants";
 
 dotenv.config();
 const main = async () => {
@@ -24,26 +23,13 @@ const main = async () => {
     username: process.env.DATABASE_USERNAME,
     database: process.env.DATABASE_NAME,
     port: process.env.DATABASE_PORT,
-    synchronize: true,
-    migrationsRun: true,
+    synchronize: !IN_PRODUCTION,
+    migrationsRun: !IN_PRODUCTION,
     entities: [ProjectEntity, TechnologyEntity],
   });
 
   const app = express();
 
-  app.use(
-    session({
-      name: COOKIE_NAME,
-      cookie: {
-        httpOnly: true,
-        secure: IN_PRODUCTION,
-        sameSite: "lax",
-      },
-      saveUninitialized: false,
-      secret: process.env.SESSION_SECRET,
-      resave: false,
-    })
-  );
   app.use(
     cors({
       origin:
