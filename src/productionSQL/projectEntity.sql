@@ -66,11 +66,11 @@
 
          
 
-    insert into project_entity (title, description, "shortDescription", "githubLink", "startDate", "isHighlight", "websiteLink", "imgLink", "heroImgLink", "tinyImgLink") 
+    insert into project_entity (title, description, "shortDescription", "githubLink", "startDate", "endDate", "isHighlight", "websiteLink", "imgLink", "heroImgLink", "tinyImgLink") 
          values ('Portfolio', 'This portfolio website you''re on right now was made with Gatsby. It talks to the backend, written using Express through graphql, with Redis caching results like all projects or all technologies.', 
          'Khong'' portfolio', 
          'https://github.com/Khongchai/portfolio-front', 
-         '2021-01-10', 'true', 'https://khong.xyz', 
+         '2021-01-10', '2022-09-01', 'true', 'https://khong.xyz', 
          'https://res.cloudinary.com/dmmhsq8ti/image/upload/v1626075879/image_4_ixpynu.png',
           'https://res.cloudinary.com/dmmhsq8ti/image/upload/v1627205294/photo-1612543827278-d19245d6a00d_k8z1gx.webp',
             'https://res.cloudinary.com/dmmhsq8ti/image/upload/v1627224304/portfolio_tinyimg_op17lu.png' 
@@ -104,12 +104,12 @@
          ((select id from technology_entity where title in ('GLSL')), (select id from project_entity where title = 'Portfolio')); 
 
 
-   insert into project_entity (title, description, "shortDescription", "githubLink", "websiteLink", "startDate", "isHighlight", "imgLink", "heroImgLink", "tinyImgLink") 
+   insert into project_entity (title, description, "shortDescription", "githubLink", "websiteLink", "startDate", "endDate", "isHighlight", "imgLink", "heroImgLink", "tinyImgLink") 
       values ('TripleAGloves', 'A portfolio website for a glove company in Thailand. The site was built using mainly Gatsby and Threejs, hosted on Github Pages.', 
       'Company Portfolio', 
       'https://github.com/Khongchai/TripleAGloves',
       'https://khongchai.github.io/TripleAGloves/', 
-      '2021-03-20', 'true',
+      '2021-03-20', '2021-05-20', 'true',
       'https://res.cloudinary.com/dmmhsq8ti/image/upload/v1626074400/image_3_s7fl9i.png', 
       'https://res.cloudinary.com/dmmhsq8ti/image/upload/v1626068805/triplea-hero_ntuaxx.png', 
       'https://res.cloudinary.com/dmmhsq8ti/image/upload/v1627224306/triplea_tiny_image_byrcio.png'
@@ -125,11 +125,11 @@
      ((select id from technology_entity where title = 'Javascript'), (select id from project_entity where title = 'TripleAGloves')), 
      ((select id from technology_entity where title = 'TypeScript'), (select id from project_entity where title = 'TripleAGloves'));
      
-      insert into project_entity (title, description, "shortDescription", "githubLink", "startDate", "isHighlight", "heroImgLink", "tinyImgLink") 
+      insert into project_entity (title, description, "shortDescription", "githubLink", "startDate", "endDate", "isHighlight", "heroImgLink", "tinyImgLink") 
       values ('ECommerce', 'A Personal eCommerce website where I sell music and accompaniment tracks I made. The backend Django and Graphene-Python, and the front-end is Next.js', 
       'Music ECommerce website', 
       'https://github.com/Khongchai/music-ecommerce',
-      '2021-07-01', 'false', 'https://res.cloudinary.com/dmmhsq8ti/image/upload/v1626068812/ecommerce-hero_r1mhgb.png', 
+      '2021-07-01', '2022-09-01', 'false', 'https://res.cloudinary.com/dmmhsq8ti/image/upload/v1626068812/ecommerce-hero_r1mhgb.png', 
       'https://res.cloudinary.com/dmmhsq8ti/image/upload/v1627224304/eCommerce_tinyimg_nnytoy.png');
       
       insert into technology_entity_front_end_in_project_entity ("technologyEntityId", "projectEntityId") values 
@@ -157,11 +157,12 @@
    --   New stuff: Serenade on a Dream, Web Spirograph, Accenture (CardX), Dotted Line Array, Modular customizable Dropdown, Dynamic Routes, Petite Transform
    --  Change highlighted projects
      
-      insert into project_entity (title, description, "shortDescription", "githubLink", "startDate", "endDate", "isHighlight", "imgLink", "heroImgLink", "tinyImgLink") 
+      insert into project_entity (title, description, "shortDescription", "githubLink", "startDate", "endDate", "isHighlight", "websiteLink", "imgLink", "heroImgLink", "tinyImgLink") 
       values ('Serenade on a Dream', 'A website for my EP "Serenade on a Dream". Built with r3f.', 
       'EP Website', 
       'https://github.com/Khongchai/serenade-on-a-dream',
       '2021-10-01', '2022-02-01', 'true', 
+      'https://serenade-on-a-dream.netlify.app', 
       'https://res.cloudinary.com/dmmhsq8ti/image/upload/v1675580322/serenade-on-a-dream-full_ajetzh.png', 
       'https://res.cloudinary.com/dmmhsq8ti/image/upload/v1675580322/serenade-on-a-dream-full_ajetzh.png', 
       'https://res.cloudinary.com/dmmhsq8ti/image/upload/v1675580322/serenade-on-a-dream-full_ajetzh.png');
