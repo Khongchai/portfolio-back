@@ -1,50 +1,62 @@
 import { MigrationInterface, QueryRunner } from "typeorm";
 
-export class migrateStuff1626693168796 implements MigrationInterface {
+export class migrateStuff1626693168712 implements MigrationInterface {
    public async up(queryRunner: QueryRunner): Promise<void> {
+      //Delete from project_entity;
       queryRunner.query(`
+
     delete from project_entity;
     delete from technology_entity;
 
     alter sequence technology_entity_id_seq restart with 1;
-insert into technology_entity (title) values ('TypeORM');
-insert into technology_entity (title) values ('MikroORM');
-insert into technology_entity (title) values ('Docker');
-insert into technology_entity (title) values ('Github');
-insert into technology_entity (title) values ('jQuery');
-insert into technology_entity (title) values ('Java');
-insert into technology_entity (title) values ('Sass');
-insert into technology_entity (title) values ('PostgreSQL');
-insert into technology_entity (title) values ('GitHub Pages');
-insert into technology_entity (title) values ('TypeScript');
-insert into technology_entity (title) values ('React');
-insert into technology_entity (title) values ('Redux');
-insert into technology_entity (title) values ('Android');
-insert into technology_entity (title) values ('Express');
-insert into technology_entity (title) values ('Django');
-insert into technology_entity (title) values ('Next.js');
-insert into technology_entity (title) values ('Heroku');
-insert into technology_entity (title) values ('Gatsby');
-insert into technology_entity (title) values ('styled-components');
-insert into technology_entity (title) values ('Chakra UI');
-insert into technology_entity (title) values ('Python');
-insert into technology_entity (title) values ('Javascript');
-insert into technology_entity (title) values ('Redis');
-insert into technology_entity (title) values ('Apollo');
-insert into technology_entity (title) values ('Urql');
-insert into technology_entity (title) values ('Node');
-insert into technology_entity (title) values ('TypeGraphQL');
-insert into technology_entity (title) values ('GraphQL'); 
-insert into technology_entity (title) values ('SQL');
-insert into technology_entity (title) values ('Google Play');
-insert into technology_entity (title) values ('Three.js');
-insert into technology_entity (title) values ('Go');
-insert into technology_entity (title) values ('Vercel');
-insert into technology_entity (title) values ('GLSL');
-insert into technology_entity (title) values ('Graphene-Python');
-insert into technology_entity (title) values ('Cypress');
-insert into technology_entity (title) values ('React Testing Library');
-insert into technology_entity (title) values ('Jest');
+   insert into technology_entity (title) values ('TypeORM');
+    insert into technology_entity (title) values ('Flutter');
+    insert into technology_entity (title) values ('WebGL');
+    insert into technology_entity (title) values ('2d Canvas');
+    insert into technology_entity (title) values ('Tailwind');
+    insert into technology_entity (title) values ('Spring Webflux');
+    insert into technology_entity (title) values ('Kafka');
+    insert into technology_entity (title) values ('MongoDB');
+    insert into technology_entity (title) values ('MikroORM');
+    insert into technology_entity (title) values ('Docker');
+    insert into technology_entity (title) values ('Github');
+    insert into technology_entity (title) values ('jQuery');
+    insert into technology_entity (title) values ('Java');
+    insert into technology_entity (title) values ('Sass');
+    insert into technology_entity (title) values ('PostgreSQL');
+    insert into technology_entity (title) values ('GitHub Pages');
+    insert into technology_entity (title) values ('TypeScript');
+    insert into technology_entity (title) values ('React');
+    insert into technology_entity (title) values ('Redux');
+    insert into technology_entity (title) values ('Android');
+    insert into technology_entity (title) values ('Express');
+    insert into technology_entity (title) values ('Django');
+    insert into technology_entity (title) values ('Next.js');
+    insert into technology_entity (title) values ('Heroku');
+    insert into technology_entity (title) values ('Gatsby');
+    insert into technology_entity (title) values ('styled-components');
+    insert into technology_entity (title) values ('Chakra UI');
+    insert into technology_entity (title) values ('Python');
+    insert into technology_entity (title) values ('Cloud Run');
+    insert into technology_entity (title) values ('Javascript');
+    insert into technology_entity (title) values ('Redis');
+    insert into technology_entity (title) values ('Apollo');
+    insert into technology_entity (title) values ('Urql');
+    insert into technology_entity (title) values ('Node');
+    insert into technology_entity (title) values ('TypeGraphQL');
+    insert into technology_entity (title) values ('GraphQL'); 
+    insert into technology_entity (title) values ('SQL');
+    insert into technology_entity (title) values ('Google Play');
+    insert into technology_entity (title) values ('Three.js');
+    insert into technology_entity (title) values ('React Three Fiber');
+    insert into technology_entity (title) values ('Go');
+    insert into technology_entity (title) values ('Vercel');
+    insert into technology_entity (title) values ('Netlify');
+    insert into technology_entity (title) values ('GLSL');
+    insert into technology_entity (title) values ('Graphene-Python');
+    insert into technology_entity (title) values ('Cypress');
+    insert into technology_entity (title) values ('React Testing Library');
+    insert into technology_entity (title) values ('Jest');
 
     alter sequence project_entity_id_seq restart with 1;
     insert into project_entity (title, description, "shortDescription", "githubLink", "websiteLink", "startDate", "endDate", "isHighlight", "imgLink", "tinyImgLink", "heroImgLink", "playStoreLink") 
@@ -196,6 +208,22 @@ insert into technology_entity (title) values ('Jest');
      ((select id from technology_entity where title = 'Javascript'), (select id from project_entity where title = 'ECommerce')), 
      ((select id from technology_entity where title = 'Python'), (select id from project_entity where title = 'ECommerce')), 
      ((select id from technology_entity where title = 'TypeScript'), (select id from project_entity where title = 'ECommerce')); 
+
+     insert into project_entity (title, description, "shortDescription", "githubLink", "startDate", "endDate", "isHighlight", "imgLink", "heroImgLink", "tinyImgLink") 
+     values ('Serenade on a Dream', 'A website for my EP - Serenade on a Dream, Built with r3f.', 
+     'EP Website', 
+     'https://github.com/Khongchai/serenade-on-a-dream',
+     '2021-10-01', '2022-02-01', 'true', 
+     'https://res.cloudinary.com/dmmhsq8ti/image/upload/v1675580322/serenade-on-a-dream-full_ajetzh.png', 
+     'https://res.cloudinary.com/dmmhsq8ti/image/upload/v1675580322/serenade-on-a-dream-full_ajetzh.png', 
+     'https://res.cloudinary.com/dmmhsq8ti/image/upload/v1675580322/serenade-on-a-dream-full_ajetzh.png');
+     
+     insert into technology_entity_front_end_in_project_entity ("technologyEntityId", "projectEntityId") values 
+       ((select id from technology_entity where title='React'), (select id from project_entity where title = 'Serenade on a Dream')),
+       ((select id from technology_entity where title='React Three Fiber'), (select id from project_entity where title = 'Serenade on a Dream'));
+    insert into technology_entity_hosting_project_entity ("technologyEntityId", "projectEntityId") values ((select id from technology_entity where title in ('Netlify')),(select id from project_entity where title = 'Serenade on a Dream'));
+    insert into technology_entity_language_of_project_entity ("technologyEntityId", "projectEntityId") values  
+    ((select id from technology_entity where title = 'TypeScript'), (select id from project_entity where title = 'Serenade on a Dream'));
                  
       `);
    }

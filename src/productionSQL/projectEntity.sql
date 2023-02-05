@@ -1,3 +1,6 @@
+        delete from technology_entity;
+        delete from project_entity;
+
     alter sequence project_entity_id_seq restart with 1;
     insert into project_entity (title, description, "shortDescription", "githubLink", "websiteLink", "startDate", "endDate", "isHighlight", "imgLink", "tinyImgLink", "heroImgLink", "playStoreLink") 
          values ('ASTRUM', 'The artistic project ASTRUM is an interdisciplinary project combining different 
@@ -148,3 +151,24 @@
      ((select id from technology_entity where title = 'Javascript'), (select id from project_entity where title = 'ECommerce')), 
      ((select id from technology_entity where title = 'Python'), (select id from project_entity where title = 'ECommerce')), 
      ((select id from technology_entity where title = 'TypeScript'), (select id from project_entity where title = 'ECommerce')); 
+     
+
+   -- TODO
+   --   New stuff: Serenade on a Dream, Web Spirograph, Accenture (CardX), Dotted Line Array, Modular customizable Dropdown, Dynamic Routes, Petite Transform
+   --  Change highlighted projects
+     
+      insert into project_entity (title, description, "shortDescription", "githubLink", "startDate", "endDate", "isHighlight", "imgLink", "heroImgLink", "tinyImgLink") 
+      values ('Serenade on a Dream', 'A website for my EP "Serenade on a Dream". Built with r3f.', 
+      'EP Website', 
+      'https://github.com/Khongchai/serenade-on-a-dream',
+      '2021-10-01', '2022-02-01', 'true', 
+      'https://res.cloudinary.com/dmmhsq8ti/image/upload/v1675580322/serenade-on-a-dream-full_ajetzh.png', 
+      'https://res.cloudinary.com/dmmhsq8ti/image/upload/v1675580322/serenade-on-a-dream-full_ajetzh.png', 
+      'https://res.cloudinary.com/dmmhsq8ti/image/upload/v1675580322/serenade-on-a-dream-full_ajetzh.png');
+      
+      insert into technology_entity_front_end_in_project_entity ("technologyEntityId", "projectEntityId") values 
+        ((select id from technology_entity where title='React'), (select id from project_entity where title = 'Serenade on a Dream')),
+        ((select id from technology_entity where title='React Three Fiber'), (select id from project_entity where title = 'Serenade on a Dream'));
+     insert into technology_entity_hosting_project_entity ("technologyEntityId", "projectEntityId") values ((select id from technology_entity where title in ('Netlify')),(select id from project_entity where title = 'Serenade on a Dream'));
+     insert into technology_entity_language_of_project_entity ("technologyEntityId", "projectEntityId") values  
+     ((select id from technology_entity where title = 'TypeScript'), (select id from project_entity where title = 'Serenade on a Dream'));
