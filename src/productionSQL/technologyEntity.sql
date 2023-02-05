@@ -47,3 +47,9 @@ insert into technology_entity (title) values ('Graphene-Python');
 insert into technology_entity (title) values ('Cypress');
 insert into technology_entity (title) values ('React Testing Library');
 insert into technology_entity (title) values ('Jest');
+insert into technology_entity (title) values ('Kotlin');
+insert into technology_entity (title) values ('Web Assembly');
+insert into technology_entity (title) values ('Rust');
+insert into technology_entity (title) values ('Dart');
+
+

@@ -27,9 +27,9 @@ export class ProjectEntity extends BaseEntity {
   @Column()
   shortDescription!: string;
 
-  @Field()
-  @Column()
-  githubLink!: string;
+  @Field({ nullable: true })
+  @Column({ nullable: true })
+  githubLink: string;
 
   @Field({ nullable: true })
   @Column({ nullable: true })

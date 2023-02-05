@@ -1,16 +1,15 @@
 import { MigrationInterface, QueryRunner } from "typeorm";
 
-export class migrateStuff1626693168713 implements MigrationInterface {
+export class migrateStuff1626693168759 implements MigrationInterface {
    public async up(queryRunner: QueryRunner): Promise<void> {
-      //Delete from project_entity;
       queryRunner.query(`
 
     delete from project_entity;
     delete from technology_entity;
 
     alter sequence technology_entity_id_seq restart with 1;
-   insert into technology_entity (title) values ('TypeORM');
     insert into technology_entity (title) values ('Flutter');
+    insert into technology_entity (title) values ('TypeORM');
     insert into technology_entity (title) values ('WebGL');
     insert into technology_entity (title) values ('2d Canvas');
     insert into technology_entity (title) values ('Tailwind');
@@ -57,8 +56,11 @@ export class migrateStuff1626693168713 implements MigrationInterface {
     insert into technology_entity (title) values ('Cypress');
     insert into technology_entity (title) values ('React Testing Library');
     insert into technology_entity (title) values ('Jest');
-
-  
+    insert into technology_entity (title) values ('Kotlin');
+    insert into technology_entity (title) values ('Web Assembly');
+    insert into technology_entity (title) values ('Rust');
+    insert into technology_entity (title) values ('Dart');
+    
     alter sequence project_entity_id_seq restart with 1;
     insert into project_entity (title, description, "shortDescription", "githubLink", "websiteLink", "startDate", "endDate", "isHighlight", "imgLink", "tinyImgLink", "heroImgLink", "playStoreLink") 
          values ('ASTRUM', 'The artistic project ASTRUM is an interdisciplinary project combining different 
@@ -69,7 +71,7 @@ export class migrateStuff1626693168713 implements MigrationInterface {
          'Pure HTML/CSS/Javascript', 
          'https://github.com/Khongchai/ASTRUM-2020', 
          'https://khongchai.github.io/ASTRUM-2020/', 
-         '2019-06-15', '2020-07-25', 'true', 
+         '2019-06-15', '2020-07-25', 'false', 
          'https://res.cloudinary.com/dmmhsq8ti/image/upload/v1618208180/Screen_Shot_2021-04-13_at_12.47.03-fullpage_farusu.png', 
          'https://res.cloudinary.com/dmmhsq8ti/image/upload/v1618208325/webicontransparent_nruh6b.png',
          'https://res.cloudinary.com/dmmhsq8ti/image/upload/v1626068805/astrum-hero_sfi3zn.png',
@@ -128,7 +130,7 @@ export class migrateStuff1626693168713 implements MigrationInterface {
          values ('Portfolio', 'This portfolio website you''re on right now was made with Gatsby. It talks to the backend, written using Express through graphql, with Redis caching results like all projects or all technologies.', 
          'Khong'' portfolio', 
          'https://github.com/Khongchai/portfolio-front', 
-         '2021-01-10', '2022-09-01', 'true', 'https://khong.xyz', 
+         '2021-01-10', '2022-09-01', 'false', 'https://khong.xyz', 
          'https://res.cloudinary.com/dmmhsq8ti/image/upload/v1626075879/image_4_ixpynu.png',
           'https://res.cloudinary.com/dmmhsq8ti/image/upload/v1627205294/photo-1612543827278-d19245d6a00d_k8z1gx.webp',
             'https://res.cloudinary.com/dmmhsq8ti/image/upload/v1627224304/portfolio_tinyimg_op17lu.png' 
@@ -163,11 +165,11 @@ export class migrateStuff1626693168713 implements MigrationInterface {
 
 
    insert into project_entity (title, description, "shortDescription", "githubLink", "websiteLink", "startDate", "endDate", "isHighlight", "imgLink", "heroImgLink", "tinyImgLink") 
-      values ('TripleAGloves', 'A portfolio website for a glove company in Thailand. The site was built using mainly Gatsby and Threejs, hosted on Github Pages.', 
+      values ('TripleAGloves', 'A portfolio website for a glove company in Thailand. The site was built using mainly Gatsby and Threejs, hosted on Github Pages. The actual site is not live anymore, the linked website is a fake version just to show roughly what I didd.', 
       'Company Portfolio', 
       'https://github.com/Khongchai/TripleAGloves',
       'https://khongchai.github.io/TripleAGloves/', 
-      '2021-03-20', '2021-05-20', 'true',
+      '2021-03-20', '2021-05-20', 'false',
       'https://res.cloudinary.com/dmmhsq8ti/image/upload/v1626074400/image_3_s7fl9i.png', 
       'https://res.cloudinary.com/dmmhsq8ti/image/upload/v1626068805/triplea-hero_ntuaxx.png', 
       'https://res.cloudinary.com/dmmhsq8ti/image/upload/v1627224306/triplea_tiny_image_byrcio.png'
@@ -231,8 +233,86 @@ export class migrateStuff1626693168713 implements MigrationInterface {
      insert into technology_entity_hosting_project_entity ("technologyEntityId", "projectEntityId") values ((select id from technology_entity where title in ('Netlify')),(select id from project_entity where title = 'Serenade on a Dream'));
      insert into technology_entity_language_of_project_entity ("technologyEntityId", "projectEntityId") values  
      ((select id from technology_entity where title = 'TypeScript'), (select id from project_entity where title = 'Serenade on a Dream'));
-                 
+
+          
+      insert into project_entity (title, description, "shortDescription", "githubLink", "startDate", "endDate", "isHighlight", "websiteLink", "imgLink", "heroImgLink", "tinyImgLink") 
+      values ('Spiro', 'A very fast, webgl-powered, interactive spirograph generator. I have built so many custom technologies for this and it took almost 2 YEARS of my life! The full project description can be found directly in the GitHub repo.', 
+      'Spirograph Generator', 
+      'https://github.com/Khongchai/web-spirograph',
+      '2021-11-01', '2023-02-01', 'true', 
+      'https://web-spirograph.netlify.app', 
+      'https://res.cloudinary.com/dmmhsq8ti/image/upload/v1675592475/ex2_fz7gre.png', 
+      'https://res.cloudinary.com/dmmhsq8ti/image/upload/v1675592475/ex2_fz7gre.png', 
+      'https://res.cloudinary.com/dmmhsq8ti/image/upload/v1675592544/ex3_cnjsv1.png');
+      
+      insert into technology_entity_front_end_in_project_entity ("technologyEntityId", "projectEntityId") values 
+        ((select id from technology_entity where title='React'), (select id from project_entity where title = 'Spiro')),
+        ((select id from technology_entity where title='2d Canvas'), (select id from project_entity where title = 'Spiro')),
+        ((select id from technology_entity where title='WebGL'), (select id from project_entity where title = 'Spiro')),
+        ((select id from technology_entity where title='Web Assembly'), (select id from project_entity where title = 'Spiro')),
+        ((select id from technology_entity where title='Tailwind'), (select id from project_entity where title = 'Spiro'));
+     insert into technology_entity_hosting_project_entity ("technologyEntityId", "projectEntityId") values ((select id from technology_entity where title in ('Netlify')),(select id from project_entity where title = 'Spiro'));
+     insert into technology_entity_language_of_project_entity ("technologyEntityId", "projectEntityId") values  
+     ((select id from technology_entity where title = 'TypeScript'), (select id from project_entity where title = 'Spiro')),
+     ((select id from technology_entity where title = 'GLSL'), (select id from project_entity where title = 'Spiro')),
+     ((select id from technology_entity where title = 'Rust'), (select id from project_entity where title = 'Spiro'));
+
+     insert into project_entity (title, description, "shortDescription", "startDate", "isHighlight", "tinyImgLink", "imgLink") 
+     values ('Credit Card & Loan', 'A project I do for one of Accenture''s clients. In this project, I alternate between working on the backend and frontend as a full-stack developer, usually spending a couple of days to a week on each aspect of the project, or if the task demands, both at the same time.', 
+     'Credit Card & Loan', 
+     '2022-09-01', 'true', 
+     'https://res.cloudinary.com/dmmhsq8ti/image/upload/v1675594249/accenture_logo_e0p9yb.png',
+     'https://res.cloudinary.com/dmmhsq8ti/image/upload/v1675594249/accenture_logo_e0p9yb.png');
+     
+     insert into technology_entity_front_end_in_project_entity ("technologyEntityId", "projectEntityId") values 
+       ((select id from technology_entity where title='React'), (select id from project_entity where title = 'Credit Card & Loan')),
+       ((select id from technology_entity where title='Flutter'), (select id from project_entity where title = 'Credit Card & Loan'));
+   insert into technology_entity_back_end_in_project_entity ("technologyEntityId", "projectEntityId") values 
+      ((select id from technology_entity where title='Spring Webflux'), (select id from project_entity where title = 'Credit Card & Loan')),
+      ((select id from technology_entity where title='Redis'), (select id from project_entity where title = 'Credit Card & Loan')),
+      ((select id from technology_entity where title='Kafka'), (select id from project_entity where title = 'Credit Card & Loan')),
+      ((select id from technology_entity where title='MongoDB'), (select id from project_entity where title = 'Credit Card & Loan'));
+    insert into technology_entity_language_of_project_entity ("technologyEntityId", "projectEntityId") values  
+    ((select id from technology_entity where title = 'Dart'), (select id from project_entity where title = 'Credit Card & Loan')),
+    ((select id from technology_entity where title = 'TypeScript'), (select id from project_entity where title = 'Credit Card & Loan')),
+    ((select id from technology_entity where title = 'Java'), (select id from project_entity where title = 'Credit Card & Loan')),
+    ((select id from technology_entity where title = 'Python'), (select id from project_entity where title = 'Credit Card & Loan')),
+    ((select id from technology_entity where title = 'Kotlin'), (select id from project_entity where title = 'Credit Card & Loan'));
+   
+    insert into project_entity (title, description, "shortDescription", "startDate", "endDate", "isHighlight", "tinyImgLink") 
+    values ('Dotted Line Array', 'The first library I wrote for Flutter that allows you to write dotted lines (surprisingly tricky to do in Flutter as of writing) with HTML5 Canvas''s syntax.', 
+    'Dotted Line Library', 
+    '2021-12-01', '2022-01-01', 'false', 
+    'https://res.cloudinary.com/dmmhsq8ti/image/upload/v1675601316/626accd8eefaec54f23310ba_flutter_developer_logo_jhxkbf.png');
+    insert into technology_entity_front_end_in_project_entity ("technologyEntityId", "projectEntityId") values 
+      ((select id from technology_entity where title='Flutter'), (select id from project_entity where title = 'Dotted Line Array'));
+   insert into technology_entity_language_of_project_entity ("technologyEntityId", "projectEntityId") values  
+   ((select id from technology_entity where title = 'Dart'), (select id from project_entity where title = 'Dotted Line Array'));
+
+   
+   insert into project_entity (title, description, "shortDescription", "startDate", "endDate", "isHighlight", "tinyImgLink") 
+   values ('Modular Customizable Dropdown', 'A dropdown library that aims to be usable with any Flutter widgets and allows the user a lot of controls over its lower-level behaviors.', 
+   'A Dropdown Library', 
+   '2022-01-01', '2022-02-01', 'false', 
+   'https://res.cloudinary.com/dmmhsq8ti/image/upload/v1675601316/626accd8eefaec54f23310ba_flutter_developer_logo_jhxkbf.png');
+   insert into technology_entity_front_end_in_project_entity ("technologyEntityId", "projectEntityId") values 
+     ((select id from technology_entity where title='Flutter'), (select id from project_entity where title = 'Modular Customizable Dropdown'));
+  insert into technology_entity_language_of_project_entity ("technologyEntityId", "projectEntityId") values  
+  ((select id from technology_entity where title = 'Dart'), (select id from project_entity where title = 'Modular Customizable Dropdown'));
+
+  
+  insert into project_entity (title, description, "shortDescription", "startDate", "endDate", "isHighlight", "tinyImgLink") 
+  values ('Dynamic Routes', 'Yet another routing libray for Flutter. This navigation library utilizes heavily Flutter''s amazing mixin support and allow for a one-place data driven navigation.', 
+  'A Navigation Library', 
+  '2022-04-01', '2022-05-01', 'false',
+  'https://res.cloudinary.com/dmmhsq8ti/image/upload/v1675601316/626accd8eefaec54f23310ba_flutter_developer_logo_jhxkbf.png');
+  insert into technology_entity_front_end_in_project_entity ("technologyEntityId", "projectEntityId") values 
+    ((select id from technology_entity where title='Flutter'), (select id from project_entity where title = 'Dynamic Routes'));
+ insert into technology_entity_language_of_project_entity ("technologyEntityId", "projectEntityId") values  
+ ((select id from technology_entity where title = 'Dart'), (select id from project_entity where title = 'Dynamic Routes'));
+
       `);
+
    }
 
    public async down(_: QueryRunner): Promise<void> { }
