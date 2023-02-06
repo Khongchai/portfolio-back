@@ -149,11 +149,6 @@
      ((select id from technology_entity where title = 'Python'), (select id from project_entity where title = 'ECommerce')), 
      ((select id from technology_entity where title = 'TypeScript'), (select id from project_entity where title = 'ECommerce')); 
      
-
-   -- TODO
-   --   New stuff: Serenade on a Dream, Web Spirograph, Accenture (CardX), Dotted Line Array, Modular customizable Dropdown, Dynamic Routes, Petite Transform
-   --  Change highlighted projects
-     
       insert into project_entity (title, description, "shortDescription", "githubLink", "startDate", "endDate", "isHighlight", "websiteLink", "imgLink", "heroImgLink", "tinyImgLink") 
       values ('Serenade on a Dream', 'A website for my EP "Serenade on a Dream". Built with r3f.', 
       'EP Website', 
