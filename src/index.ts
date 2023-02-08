@@ -23,8 +23,10 @@ const main = async () => {
     username: process.env.DATABASE_USERNAME,
     database: process.env.DATABASE_NAME,
     port: process.env.DATABASE_PORT,
-    synchronize: !IN_PRODUCTION,
-    migrationsRun: !IN_PRODUCTION,
+    synchronize: true,
+    migrationsRun: true,
+    // synchronize: !IN_PRODUCTION,
+    // migrationsRun: !IN_PRODUCTION,
     entities: [ProjectEntity, TechnologyEntity],
   });
 

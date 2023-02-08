@@ -11,8 +11,6 @@ RUN npm install\
 COPY . .
 
 RUN tsc
-RUN typeorm schema:sync
-RUN typeorm migration:run
 
 ENV NODE_ENV production
 
