@@ -11,8 +11,6 @@ COPY . .
 
 RUN tsc
 
-RUN npm uninstall typescript -g
-
 ENV NODE_ENV production
 
 EXPOSE ${PORT}
