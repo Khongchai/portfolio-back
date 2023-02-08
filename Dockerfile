@@ -4,9 +4,14 @@ WORKDIR /usr/src/app/.vc
 
 COPY package*.json ./
 
-RUN npm install
+RUN npm install\
+    && npm install typescript -g
 
 COPY . .
+
+RUN tsc
+
+RUN npm uninstall typescript -g
 
 ENV NODE_ENV production
 
