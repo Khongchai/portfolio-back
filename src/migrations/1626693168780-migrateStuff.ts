@@ -1,6 +1,6 @@
 import { MigrationInterface, QueryRunner } from "typeorm";
 
-export class migrateStuff1626693168759 implements MigrationInterface {
+export class migrateStuff1626693168812 implements MigrationInterface {
    public async up(queryRunner: QueryRunner): Promise<void> {
       queryRunner.query(`
 
@@ -185,32 +185,33 @@ export class migrateStuff1626693168759 implements MigrationInterface {
      ((select id from technology_entity where title = 'Javascript'), (select id from project_entity where title = 'TripleAGloves')), 
      ((select id from technology_entity where title = 'TypeScript'), (select id from project_entity where title = 'TripleAGloves'));
      
-      insert into project_entity (title, description, "shortDescription", "githubLink", "startDate", "endDate", "isHighlight", "heroImgLink", "tinyImgLink") 
-      values ('ECommerce', 'A Personal eCommerce website where I sell music and accompaniment tracks I made. The backend Django and Graphene-Python, and the front-end is Next.js', 
-      'Music ECommerce website', 
+      insert into project_entity (title, description, "shortDescription", "githubLink", "startDate", "endDate", "isHighlight", "heroImgLink", "tinyImgLink", "websiteLink") 
+      values ('Musical Companion', 'A platform that aims to provide music students and teachers access to high-quality accompaniment tracks. Alas, this took too much of my time and I did not see the project being a viable option to invest my time in. Also, Herkou free tier is down, so the data is all gone.', 
+      'Music Accompaniment Platform', 
       'https://github.com/Khongchai/music-ecommerce',
-      '2021-07-01', '2022-09-01', 'false', 'https://res.cloudinary.com/dmmhsq8ti/image/upload/v1626068812/ecommerce-hero_r1mhgb.png', 
-      'https://res.cloudinary.com/dmmhsq8ti/image/upload/v1627224304/eCommerce_tinyimg_nnytoy.png');
+      '2021-07-01', '2022-09-01', 'false', 'https://res.cloudinary.com/dmmhsq8ti/image/upload/v1675705659/Screenshot_2023-02-07_004716_buf3f8.png', 
+      'https://res.cloudinary.com/dmmhsq8ti/image/upload/v1627224304/eCommerce_tinyimg_nnytoy.png',
+      'https://musical-companion.vercel.app/');
       
       insert into technology_entity_front_end_in_project_entity ("technologyEntityId", "projectEntityId") values 
-        ((select id from technology_entity where title='Next.js'), (select id from project_entity where title = 'ECommerce')),
-        ((select id from technology_entity where title='React'), (select id from project_entity where title = 'ECommerce')),
-        ((select id from technology_entity where title='Urql'), (select id from project_entity where title = 'ECommerce')),
-        ((select id from technology_entity where title='GraphQL'), (select id from project_entity where title = 'ECommerce')),
-        ((select id from technology_entity where title='Chakra UI'), (select id from project_entity where title = 'ECommerce'));
+        ((select id from technology_entity where title='Next.js'), (select id from project_entity where title = 'Musical Companion')),
+        ((select id from technology_entity where title='React'), (select id from project_entity where title = 'Musical Companion')),
+        ((select id from technology_entity where title='Urql'), (select id from project_entity where title = 'Musical Companion')),
+        ((select id from technology_entity where title='GraphQL'), (select id from project_entity where title = 'Musical Companion')),
+        ((select id from technology_entity where title='Chakra UI'), (select id from project_entity where title = 'Musical Companion'));
       insert into technology_entity_back_end_in_project_entity ("technologyEntityId", "projectEntityId") values 
-         ((select id from technology_entity where title='Django'), (select id from project_entity where title = 'ECommerce')),
-         ((select id from technology_entity where title='Redis'), (select id from project_entity where title = 'ECommerce')),
-         ((select id from technology_entity where title='Graphene-Python'), (select id from project_entity where title = 'ECommerce')),
-         ((select id from technology_entity where title='GraphQL'), (select id from project_entity where title = 'ECommerce')),
-         ((select id from technology_entity where title='Docker'), (select id from project_entity where title = 'ECommerce')),
-         ((select id from technology_entity where title='PostgreSQL'), (select id from project_entity where title = 'ECommerce'));
-     insert into technology_entity_hosting_project_entity ("technologyEntityId", "projectEntityId") values ((select id from technology_entity where title in ('Vercel')),(select id from project_entity where title = 'ECommerce'));
-     insert into technology_entity_hosting_project_entity ("technologyEntityId", "projectEntityId") values ((select id from technology_entity where title in ('Heroku')),(select id from project_entity where title = 'ECommerce'));
+         ((select id from technology_entity where title='Django'), (select id from project_entity where title = 'Musical Companion')),
+         ((select id from technology_entity where title='Redis'), (select id from project_entity where title = 'Musical Companion')),
+         ((select id from technology_entity where title='Graphene-Python'), (select id from project_entity where title = 'Musical Companion')),
+         ((select id from technology_entity where title='GraphQL'), (select id from project_entity where title = 'Musical Companion')),
+         ((select id from technology_entity where title='Docker'), (select id from project_entity where title = 'Musical Companion')),
+         ((select id from technology_entity where title='PostgreSQL'), (select id from project_entity where title = 'Musical Companion'));
+     insert into technology_entity_hosting_project_entity ("technologyEntityId", "projectEntityId") values ((select id from technology_entity where title in ('Vercel')),(select id from project_entity where title = 'Musical Companion'));
+     insert into technology_entity_hosting_project_entity ("technologyEntityId", "projectEntityId") values ((select id from technology_entity where title in ('Heroku')),(select id from project_entity where title = 'Musical Companion'));
      insert into technology_entity_language_of_project_entity ("technologyEntityId", "projectEntityId") values  
-     ((select id from technology_entity where title = 'Javascript'), (select id from project_entity where title = 'ECommerce')), 
-     ((select id from technology_entity where title = 'Python'), (select id from project_entity where title = 'ECommerce')), 
-     ((select id from technology_entity where title = 'TypeScript'), (select id from project_entity where title = 'ECommerce')); 
+     ((select id from technology_entity where title = 'Javascript'), (select id from project_entity where title = 'Musical Companion')), 
+     ((select id from technology_entity where title = 'Python'), (select id from project_entity where title = 'Musical Companion')), 
+     ((select id from technology_entity where title = 'TypeScript'), (select id from project_entity where title = 'Musical Companion')); 
      
 
    -- TODO
@@ -279,33 +280,36 @@ export class migrateStuff1626693168759 implements MigrationInterface {
     ((select id from technology_entity where title = 'Python'), (select id from project_entity where title = 'Credit Card & Loan')),
     ((select id from technology_entity where title = 'Kotlin'), (select id from project_entity where title = 'Credit Card & Loan'));
    
-    insert into project_entity (title, description, "shortDescription", "startDate", "endDate", "isHighlight", "tinyImgLink") 
+    insert into project_entity (title, description, "shortDescription", "startDate", "endDate", "isHighlight", "tinyImgLink", "githubLink") 
     values ('Dotted Line Array', 'The first library I wrote for Flutter that allows you to write dotted lines (surprisingly tricky to do in Flutter as of writing) with HTML5 Canvas''s syntax.', 
     'Dotted Line Library', 
     '2021-12-01', '2022-01-01', 'false', 
-    'https://res.cloudinary.com/dmmhsq8ti/image/upload/v1675601316/626accd8eefaec54f23310ba_flutter_developer_logo_jhxkbf.png');
+    'https://res.cloudinary.com/dmmhsq8ti/image/upload/v1675601316/626accd8eefaec54f23310ba_flutter_developer_logo_jhxkbf.png',
+    'https://github.com/Khongchai/flutter_dotted_line_array');
     insert into technology_entity_front_end_in_project_entity ("technologyEntityId", "projectEntityId") values 
       ((select id from technology_entity where title='Flutter'), (select id from project_entity where title = 'Dotted Line Array'));
    insert into technology_entity_language_of_project_entity ("technologyEntityId", "projectEntityId") values  
    ((select id from technology_entity where title = 'Dart'), (select id from project_entity where title = 'Dotted Line Array'));
 
    
-   insert into project_entity (title, description, "shortDescription", "startDate", "endDate", "isHighlight", "tinyImgLink") 
+   insert into project_entity (title, description, "shortDescription", "startDate", "endDate", "isHighlight", "tinyImgLink", "githubLink") 
    values ('Modular Customizable Dropdown', 'A dropdown library that aims to be usable with any Flutter widgets and allows the user a lot of controls over its lower-level behaviors.', 
    'A Dropdown Library', 
    '2022-01-01', '2022-02-01', 'false', 
-   'https://res.cloudinary.com/dmmhsq8ti/image/upload/v1675601316/626accd8eefaec54f23310ba_flutter_developer_logo_jhxkbf.png');
+   'https://res.cloudinary.com/dmmhsq8ti/image/upload/v1675601316/626accd8eefaec54f23310ba_flutter_developer_logo_jhxkbf.png',
+   'https://github.com/Khongchai/modular_customizable_dropdown');
    insert into technology_entity_front_end_in_project_entity ("technologyEntityId", "projectEntityId") values 
      ((select id from technology_entity where title='Flutter'), (select id from project_entity where title = 'Modular Customizable Dropdown'));
   insert into technology_entity_language_of_project_entity ("technologyEntityId", "projectEntityId") values  
   ((select id from technology_entity where title = 'Dart'), (select id from project_entity where title = 'Modular Customizable Dropdown'));
 
   
-  insert into project_entity (title, description, "shortDescription", "startDate", "endDate", "isHighlight", "tinyImgLink") 
+  insert into project_entity (title, description, "shortDescription", "startDate", "endDate", "isHighlight", "tinyImgLink", "githubLink") 
   values ('Dynamic Routes', 'Yet another routing libray for Flutter. This navigation library utilizes heavily Flutter''s amazing mixin support and allow for a one-place data driven navigation.', 
   'A Navigation Library', 
   '2022-04-01', '2022-05-01', 'false',
-  'https://res.cloudinary.com/dmmhsq8ti/image/upload/v1675601316/626accd8eefaec54f23310ba_flutter_developer_logo_jhxkbf.png');
+  'https://res.cloudinary.com/dmmhsq8ti/image/upload/v1675601316/626accd8eefaec54f23310ba_flutter_developer_logo_jhxkbf.png',
+   'https://github.com/Khongchai/dynamic_routes');
   insert into technology_entity_front_end_in_project_entity ("technologyEntityId", "projectEntityId") values 
     ((select id from technology_entity where title='Flutter'), (select id from project_entity where title = 'Dynamic Routes'));
  insert into technology_entity_language_of_project_entity ("technologyEntityId", "projectEntityId") values  
